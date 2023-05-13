@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "mastodon"
 include(":app")
+include(":mastodon-api")
