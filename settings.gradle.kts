@@ -16,3 +16,5 @@ dependencyResolutionManagement {
 rootProject.name = "mastodon"
 include(":app")
 include(":mastodon-api")
+include(":feature:timeline")
+include(":core:compose")

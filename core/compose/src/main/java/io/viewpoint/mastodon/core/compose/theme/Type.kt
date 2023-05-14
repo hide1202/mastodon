@@ -1,4 +1,4 @@
-package io.viewpoint.mastodon.ui.theme
+package io.viewpoint.mastodon.core.compose.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

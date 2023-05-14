@@ -1,4 +1,4 @@
-package io.viewpoint.mastodon.ui.theme
+package io.viewpoint.mastodon.core.compose.theme
 
 import androidx.compose.ui.graphics.Color
 
