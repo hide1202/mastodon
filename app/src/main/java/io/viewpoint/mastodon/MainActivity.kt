@@ -1,5 +1,7 @@
 package io.viewpoint.mastodon
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -42,7 +44,15 @@ class MainActivity : ComponentActivity() {
                             timelines.map { it.content }
                         }
                     }
-                    TimelineScreen(contents)
+                    TimelineScreen(
+                        modifier = Modifier.fillMaxSize(),
+                        contents = contents,
+                        onLinkClicked = { url ->
+                            startActivity(Intent(Intent.ACTION_VIEW).apply {
+                                data = Uri.parse(url)
+                            })
+                        }
+                    )
                 }
             }
         }
