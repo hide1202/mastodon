@@ -6,7 +6,6 @@ import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.text.style.URLSpan
 import android.text.style.UnderlineSpan
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.text.ClickableText
@@ -27,17 +26,18 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.text.HtmlCompat
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalTextApi::class)
+@OptIn(ExperimentalTextApi::class)
 @Composable
 fun HtmlText(
-    modifier: Modifier = Modifier,
     htmlText: String,
+    modifier: Modifier = Modifier,
     style: TextStyle = TextStyle.Default,
     softWrap: Boolean = true,
     overflow: TextOverflow = TextOverflow.Clip,
     maxLines: Int = Int.MAX_VALUE,
     onTextLayout: (TextLayoutResult) -> Unit = {},
     onLinkClicked: (String) -> Unit = {},
+    onClicked: () -> Unit = {},
 ) {
     val convertedText = HtmlCompat
         .fromHtml(htmlText, HtmlCompat.FROM_HTML_MODE_LEGACY)
@@ -46,7 +46,6 @@ fun HtmlText(
     ClickableText(
         modifier = modifier,
         text = convertedText,
-        onHover = {},
         style = style,
         softWrap = softWrap,
         overflow = overflow,
@@ -58,6 +57,7 @@ fun HtmlText(
                 ?.let { annotation ->
                     onLinkClicked(annotation.item.url)
                 }
+                ?: onClicked()
         },
     )
 }
